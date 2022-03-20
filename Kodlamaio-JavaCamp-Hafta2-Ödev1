@@ -1,0 +1,77 @@
+Özellik Sınıfları-->Course,Member,Teacher
+İş Sınıfları-->MemberManager,TeacherService
+Bu sınıflara ait özellik ve metotlar aşağıda belirttiğim gibidir.
+Yazdığım kodları okumanızı şiddetle tavsiye ederim.Eksiğim varsa da belirtirseniz sevinirim :)
+Şimdiden teşekkürler.
+
+
+public class Course {
+	
+	public Course(String name,int id,Teacher teacher)
+	
+	String name;// Ders adı
+	int id;
+	byte progressionScore=0; //0-255 arası yeterli çünkü max->%100 min->%0 olabilir
+							 //başlangıç değeri olarak 0 default değerler başlamak.
+								
+	Teacher teacher;//Teacher classı tanımlamadım ama örnek olsun diye belirttim.
+					//Her dersin bir eğitmeni vardır !!!
+	
+}
+
+public class Member {
+	
+	public Member(String fullName,String email,String password,int id) {
+		this.fullName=fullName;
+		this.email=email;
+		this.password=password;
+		this.id=id;
+	}
+	
+	String fullName;
+	String email;
+	String password;
+	int id;
+	int takingCourseNumber=0;//alınan ders sayısı default olarak 0 dan başlasın.
+	
+	Course[] takingCourses=new takingCourses[10];
+	Course[] finishedCourse=new finishedCourse[10];
+
+}
+
+public class MemberManager {
+	
+	public void takeCourse(Course course,Member member) {
+		member.takingCourses[member.takingCourseNumber]
+		member.takingCourseNumber++;//kursa başladıktan sonra kullanıcının alınan kurs sayısı artsın.
+		//tek satırdı yazmak için söyle yapılabilirdi-->member.takingCourses[member.takingCourseNumber++]
+		//ama böyle daha okunaklı karşı taraf için.
+	}
+
+}
+
+public class Teacher {
+	
+	String fullName;
+	int id;
+	String password;
+	
+	int givingCourseNumber=0;//default olarak 0 olsun.
+	Course[] givingCourses= new Course[10]; 
+	
+	
+	
+
+}
+
+public class TeacherService {
+	public void AddCourse (Teacher teacher,String courseName,int id) {
+		Course course=new Course(courseName, id,teacher);
+		teacher.givingCourses[teacher.givingCourseNumber]=course;
+		teacher.givingCourseNumber++;	
+		//kursa eklendikten sonra verilen kurs sayısı artsın.
+		//tek satırdı yazmak için söyle yapılabilirdi-->teacher.givingCourses[teacher.givingCourseNumber++]
+		//ama böyle daha okunaklı karşı taraf için.
+	}
+
+}
